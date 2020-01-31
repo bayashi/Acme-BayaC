@@ -28,6 +28,13 @@ Acme::BayaC - one line description
     use Acme::BayaC;
 
 
+=head1 METHODS
+
+=head2 new
+
+constructor
+
+
 =head1 DESCRIPTION
 
 Acme::BayaC is
