@@ -68,5 +68,5 @@ jobs:
           PAUSE_PASSWORD: ${{ secrets.PAUSE_PASSWORD }}
         run: |
             make dist
-            cpan-upload-http -user $PAUSE_USER -password $PAUSE_PASSWORD -email $PAUSE_EMAIL -verbose Acme-BayaC-0.01.tar.gz
+            cpan-upload-http -ni -user $PAUSE_USER -password $PAUSE_PASSWORD -mailto $PAUSE_EMAIL -verbose -debug Acme-BayaC-0.01.tar.gz
         if: matrix.perl-version == 'latest' && github.ref == 'refs/heads/master'
