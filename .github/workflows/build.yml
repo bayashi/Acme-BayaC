@@ -53,7 +53,7 @@ jobs:
             cover -report coveralls
         if: matrix.perl-version == 'latest'
       - name: Install cpan-upload-http
-        run: curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure cpan-upload-http
+        run: curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n https://cpan.metacpan.org/authors/id/B/BR/BRADFITZ/cpan-upload-http-2.4.tar.gz
         if: matrix.perl-version == 'latest' && github.ref == 'refs/heads/master'
       - name: Install Shipit
         run: curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure Shipit
