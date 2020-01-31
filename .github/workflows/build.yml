@@ -55,6 +55,7 @@ jobs:
       - name: Install cpan-upload-http
         run: curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n -q https://cpan.metacpan.org/authors/id/B/BR/BRADFITZ/cpan-upload-http-2.4.tar.gz
         if: matrix.perl-version == 'latest' && github.ref == 'refs/heads/master'
+      - name: Install cpan-upload-http dependencies
         run: curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure LWP::UserAgent AppConfig::Std HTTP::Request::Common HTTP::Status
         if: matrix.perl-version == 'latest' && github.ref == 'refs/heads/master'
       - name: Install Shipit
