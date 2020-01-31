@@ -63,9 +63,10 @@ jobs:
         if: matrix.perl-version == 'latest' && github.ref == 'refs/heads/master'
       - name: CPANize
         env:
-          PAUSE_ID: ${{ secrets.PAUSE_ID }}
+          PAUSE_USER: ${{ secrets.PAUSE_USER }}
+          PAUSE_EMAIL: ${{ secrets.PAUSE_EMAIL }}
           PAUSE_PASSWORD: ${{ secrets.PAUSE_PASSWORD }}
         run: |
             make dist
-            cpan-upload-http -user $PAUSE_USER -password $PAUSE_PASSWORD -verbose Acme-BayaC-0.01.tar.gz
+            cpan-upload-http -user $PAUSE_USER -password $PAUSE_PASSWORD -email $PAUSE_EMAIL -verbose Acme-BayaC-0.01.tar.gz
         if: matrix.perl-version == 'latest' && github.ref == 'refs/heads/master'
