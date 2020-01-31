@@ -52,3 +52,19 @@ jobs:
             cover -test
             cover -report coveralls
         if: matrix.perl-version == 'latest'
+      - name: Install cpan-upload-http
+        run: curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure cpan-upload-http
+        if: matrix.perl-version == 'latest' && $GITHUB_REF == 'refs/heads/master' && $GITHUB_WORKFLOW == 'build'
+      - name: Install Shipit
+        run: curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure Shipit
+        if: matrix.perl-version == 'latest' && $GITHUB_REF == 'refs/heads/master' && $GITHUB_WORKFLOW == 'build'
+      - name: CPANize
+        env:
+          PAUSE_ID: ${{ secrets.PAUSE_ID }}
+          PAUSE_PASSWORD: ${{ secrets.PAUSE_PASSWORD }}
+        run: |
+            echo $PAUSE_ID
+            echo $PAUSE_PASSWORD
+            make dist
+            ls -la
+        if: matrix.perl-version == 'latest' && $GITHUB_REF == 'refs/heads/master' && $GITHUB_WORKFLOW == 'build'
