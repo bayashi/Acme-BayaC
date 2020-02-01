@@ -79,15 +79,15 @@ jobs:
       - name: CPANize
         env:
           PAUSE_USER: ${{ secrets.PAUSE_USER }}
-          PAUSE_EMAIL: ${{ secrets.PAUSE_EMAIL }}
           PAUSE_PASSWORD: ${{ secrets.PAUSE_PASSWORD }}
+          PAUSE_MAILTO: ${{ secrets.PAUSE_MAILTO }}
         run: |
             curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure LWP::UserAgent AppConfig::Std HTTP::Request::Common HTTP::Status
             curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n -q https://cpan.metacpan.org/authors/id/B/BR/BRADFITZ/cpan-upload-http-2.4.tar.gz
             curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure ShipIt ShipIt::Step::ChangeAllVersions
             echo "user" $PAUSE_USER > .pause
             echo "password" $PAUSE_PASSWORD >> .pause
-            echo "mailto" $PAUSE_EMAIL >> .pause
+            echo "mailto" $PAUSE_MAILTO >> .pause
             echo "steps = FindVersion, ChangeAllVersions, MakeDist, UploadCPAN" > .shipit
             ls -la
             yes | shipit
