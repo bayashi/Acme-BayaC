@@ -90,5 +90,5 @@ jobs:
             echo "mailto" $PAUSE_EMAIL >> .pause
             echo "steps = FindVersion, ChangeAllVersions, MakeDist, UploadCPAN" > .shipit
             ls -la
-            shipit
+            yes | shipit
         if: matrix.perl-version == 'latest' && github.ref == 'refs/heads/master'
