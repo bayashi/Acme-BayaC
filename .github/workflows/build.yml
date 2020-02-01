@@ -85,7 +85,9 @@ jobs:
             curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure LWP::UserAgent AppConfig::Std HTTP::Request::Common HTTP::Status
             curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n -q https://cpan.metacpan.org/authors/id/B/BR/BRADFITZ/cpan-upload-http-2.4.tar.gz
             curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure ShipIt
-            echo "steps = FindVersion, ChangeAllVersions, Tag" > .shipit
-            make dist
+            echo "steps = FindVersion, ChangeAllVersions, Tag, MakeDist" > .shipit
+            cat .shipit
+            shipit
+            ls -la
             #cpan-upload-http -ni -user $PAUSE_USER -password $PAUSE_PASSWORD -mailto $PAUSE_EMAIL -verbose -debug Acme-BayaC-0.01.tar.gz
         if: matrix.perl-version == 'latest' && github.ref == 'refs/heads/master'
