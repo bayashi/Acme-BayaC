@@ -89,5 +89,5 @@ jobs:
             cat .shipit
             shipit
             ls -la
-            #cpan-upload-http -ni -user $PAUSE_USER -password $PAUSE_PASSWORD -mailto $PAUSE_EMAIL -verbose -debug Acme-BayaC-0.01.tar.gz
+            cpan-upload-http -ni -user $PAUSE_USER -password $PAUSE_PASSWORD -mailto $PAUSE_EMAIL
         if: matrix.perl-version == 'latest' && github.ref == 'refs/heads/master'
