@@ -10,6 +10,8 @@ nytprof.out
 MANIFEST.bak
 *.sw[po]
 META.yml
+META.json
+LICENSE
 MYMETA.*
 *.tar.gz
 Acme-BayaC-*
