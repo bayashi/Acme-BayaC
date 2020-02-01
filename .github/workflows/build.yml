@@ -90,5 +90,6 @@ jobs:
             echo "steps = FindVersion, ChangeAllVersions, DistTest, MakeDist, UploadCPAN" > .shipit
             ls -la
             git status
+            git diff
             yes | shipit
         if: matrix.perl-version == 'latest' && github.ref == 'refs/heads/master'
