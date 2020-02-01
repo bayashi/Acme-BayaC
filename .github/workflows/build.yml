@@ -76,21 +76,15 @@ jobs:
             cover -test
             cover -report coveralls
         if: matrix.perl-version == 'latest'
-      - name: Install cpan-upload-http
-        run: curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n -q https://cpan.metacpan.org/authors/id/B/BR/BRADFITZ/cpan-upload-http-2.4.tar.gz
-        if: matrix.perl-version == 'latest' && github.ref == 'refs/heads/master'
-      - name: Install cpan-upload-http dependencies
-        run: curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure LWP::UserAgent AppConfig::Std HTTP::Request::Common HTTP::Status
-        if: matrix.perl-version == 'latest' && github.ref == 'refs/heads/master'
-      - name: Install Shipit
-        run: curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure ShipIt
-        if: matrix.perl-version == 'latest' && github.ref == 'refs/heads/master'
       - name: CPANize
         env:
           PAUSE_USER: ${{ secrets.PAUSE_USER }}
           PAUSE_EMAIL: ${{ secrets.PAUSE_EMAIL }}
           PAUSE_PASSWORD: ${{ secrets.PAUSE_PASSWORD }}
         run: |
+            curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure LWP::UserAgent AppConfig::Std HTTP::Request::Common HTTP::Status
+            curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n -q https://cpan.metacpan.org/authors/id/B/BR/BRADFITZ/cpan-upload-http-2.4.tar.gz
+            curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure ShipIt
             make dist
             #cpan-upload-http -ni -user $PAUSE_USER -password $PAUSE_PASSWORD -mailto $PAUSE_EMAIL -verbose -debug Acme-BayaC-0.01.tar.gz
         if: matrix.perl-version == 'latest' && github.ref == 'refs/heads/master'
