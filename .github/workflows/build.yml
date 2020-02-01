@@ -89,7 +89,7 @@ jobs:
             echo "user" $PAUSE_USER > $HOME/.pause
             echo "password" $PAUSE_PASSWORD >> $HOME/.pause
             echo "mailto =" $PAUSE_MAILTO >> $HOME/.pause
-            echo "steps = FindVersion, ChangeAllVersions, DistTest, MakeDist, UploadCPAN" > $HOME/.shipit
+            echo "steps = FindVersion, ChangeAllVersions, DistTest, MakeDist, UploadCPAN" > .shipit
             ls -la
             git status
             yes | shipit
