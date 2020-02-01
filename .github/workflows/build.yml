@@ -89,6 +89,7 @@ jobs:
             echo "user" $PAUSE_USER > $HOME/.pause
             echo "password" $PAUSE_PASSWORD >> $HOME/.pause
             echo "mailto =" $PAUSE_MAILTO >> $HOME/.pause
+            chmod 0600 $HOME/.pause
             echo "steps = FindVersion, ChangeAllVersions, DistTest, MakeDist, UploadCPAN" > .shipit
             ls -la
             git status
