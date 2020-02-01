@@ -87,7 +87,7 @@ jobs:
             curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure ShipIt ShipIt::Step::ChangeAllVersions
             echo "user" $PAUSE_USER > .pause
             echo "password" $PAUSE_PASSWORD >> .pause
-            echo "mailto" $PAUSE_MAILTO >> .pause
+            echo "mailto =" $PAUSE_MAILTO >> .pause
             chmod 0600 .pause
             echo "steps = FindVersion, ChangeAllVersions, MakeDist, UploadCPAN" > .shipit
             ls -la
