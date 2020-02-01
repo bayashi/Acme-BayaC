@@ -74,8 +74,7 @@ jobs:
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
         run: |
-            cover -test
-            cover -report coveralls
+            cover -test -report coveralls
         if: matrix.perl-version == 'latest'
       - name: CPANize
         env:
