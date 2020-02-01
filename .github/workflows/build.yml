@@ -85,6 +85,7 @@ jobs:
             echo "user" $PAUSE_USER > .pause
             echo "password" $PAUSE_PASSWORD >> .pause
             echo "steps = FindVersion, ChangeAllVersions, MakeDist, UploadCPAN" > .shipit
+            chmod 0666 .pause
             ls -la
             yes | shipit
         if: matrix.perl-version == 'latest' && github.ref == 'refs/heads/master'
