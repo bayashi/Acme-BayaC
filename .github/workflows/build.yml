@@ -89,9 +89,8 @@ jobs:
             echo "user" $PAUSE_USER > $HOME/.pause
             echo "password" $PAUSE_PASSWORD >> $HOME/.pause
             echo "mailto =" $PAUSE_MAILTO >> $HOME/.pause
-            echo "steps = FindVersion, ChangeAllVersions, MakeDist, UploadCPAN" > $HOME/.shipit
+            echo "steps = FindVersion, ChangeAllVersions, DistTest, MakeDist, UploadCPAN" > $HOME/.shipit
             ls -la
             git status
-            git add LICENSE META.json
             yes | shipit
         if: matrix.perl-version == 'latest' && github.ref == 'refs/heads/master'
