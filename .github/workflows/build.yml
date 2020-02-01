@@ -91,5 +91,7 @@ jobs:
             echo "mailto =" $PAUSE_MAILTO >> $HOME/.pause
             echo "steps = FindVersion, ChangeAllVersions, MakeDist, UploadCPAN" > $HOME/.shipit
             ls -la
+            git status
+            git add LICENSE META.json
             yes | shipit
         if: matrix.perl-version == 'latest' && github.ref == 'refs/heads/master'
