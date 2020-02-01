@@ -31,3 +31,4 @@
 ^META\.yml$
 ^Acme-BayaC-*^MYMETA\.yml$
 ^MYMETA\.json$
+^MYMETA\.yml$
