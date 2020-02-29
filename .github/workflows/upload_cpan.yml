@@ -1,4 +1,4 @@
-name: build
+name: upload_cpan
 
 on:
   push:
