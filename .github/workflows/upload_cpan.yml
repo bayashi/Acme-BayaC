@@ -78,4 +78,4 @@ jobs:
             ls -la
             git status
             git diff
-            cpan-upload -u $PAUSE_USER -p "" Acme-BayaC-`perl -Ilib -MAcme::BayaC -e 'print $Acme::BayaC::VERSION'`.tar.gz
+            cpan-upload -c $HOME/.pause -u $PAUSE_USER -p "" $HOME/Acme-BayaC-`perl -Ilib -MAcme::BayaC -e 'print $Acme::BayaC::VERSION'`.tar.gz
