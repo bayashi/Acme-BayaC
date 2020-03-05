@@ -76,20 +76,3 @@ jobs:
         run: |
             cover -test -report coveralls
         if: matrix.perl-version == 'latest'
-      - name: CPANize
-        env:
-          PAUSE_USER: ${{ secrets.PAUSE_USER }}
-          PAUSE_PASSWORD: ${{ secrets.PAUSE_PASSWORD }}
-          PAUSE_MAILTO: ${{ secrets.PAUSE_MAILTO }}
-        run: |
-            curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure CPAN::Uploader ShipIt ShipIt::Step::ChangeAllVersions
-            echo "user" $PAUSE_USER > $HOME/.pause
-            echo "password" $PAUSE_PASSWORD >> $HOME/.pause
-            echo "mailto" $PAUSE_MAILTO >> $HOME/.pause
-            chmod 0600 $HOME/.pause
-            echo "steps = FindVersion, ChangeAllVersions, DistTest, MakeDist, UploadCPAN" > .shipit
-            ls -la
-            git status
-            git diff
-            yes | shipit
-        if: matrix.perl-version == 'latest' && github.ref == 'refs/heads/master'
