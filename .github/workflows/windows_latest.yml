@@ -4,12 +4,9 @@ on:
   push:
     branches:
       - master
+      - '**windows**'
     tags-ignore:
       - '*'
-  pull_request:
-    branches:
-      - master
-      - '**windows**'
 
 jobs:
   perl:
