@@ -5,13 +5,14 @@ on:
     branches:
       - master
       - '**windows**'
+    tags-ignore:
+      - '*'
+  pull_request:
+    branches:
       - '!bump-version'
       - '!bump_version'
       - '!doc?'
       - '!pod'
-    tags-ignore:
-      - '*'
-  pull_request:
 
 jobs:
   perl:
