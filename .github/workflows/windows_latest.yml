@@ -7,6 +7,12 @@ on:
       - '**windows**'
     tags-ignore:
       - '*'
+  pull_request:
+    branches-ignore:
+      - 'bump-version'
+      - 'bump_version'
+      - 'doc?'
+      - 'pod'
 
 jobs:
   perl:
