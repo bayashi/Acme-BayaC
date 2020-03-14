@@ -4,15 +4,13 @@ on:
   push:
     branches:
       - master
+      - '!bump-version'
+      - '!bump_version'
+      - '!doc?'
+      - '!pod'
     tags-ignore:
       - '*'
   pull_request:
-    branches-ignore:
-      - 'bump-version'
-      - 'bump_version'
-      - 'doc?'
-      - 'pod'
-
 
 jobs:
   perl:
